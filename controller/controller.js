@@ -1,4 +1,4 @@
-multi.controller('listCtrl', function($scope, userData, $location) {
+multi.controller('listCtrl', function($scope, userData) {
     $scope.users = userData.list();
     $scope.predicate = 'id';
     $scope.reverse = true;
@@ -37,17 +37,10 @@ multi.controller('listCtrl', function($scope, userData, $location) {
         userData.go(path);
     };
 
-    $scope.editGo = function (id) {
-        $location.path('/editUser' + id);
-    };
-
-
-
 });
 
 
 multi.controller('editCtrl', function($scope, $routeParams,  userData) {
-    $scope.users = userData.list();
     $scope.incomplete = true;
     $scope.userId = $routeParams.userId;
     $scope.newUser = userData.getUser($routeParams.userId);
@@ -80,7 +73,6 @@ multi.controller('editCtrl', function($scope, $routeParams,  userData) {
 
 
 multi.controller('newCtrl', function($scope, userData) {
-    $scope.users = userData.list();
     $scope.incomplete = true;
     $scope.newUser = {};
 

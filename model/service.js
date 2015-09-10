@@ -14,13 +14,17 @@ multi.service('userData', function($location) {
         {id:12, fName:'Amanda',lName:"Wills", sex: "Female", age: "34" }
     ];
     var i;
-    var num = users.length;
-    var eUser = null;
+    var j;
+    var num = users[0].id;
 
+    for (j=0; j<users.length; j++) {
+        num = Math.max(users[j].id, num);
+    }
 
     this.saveUser = function(user) {
         if (user.id == null){
-            user.id = num++;
+            num++;
+            user.id = num;
             users.push(user);
         }
         else {
